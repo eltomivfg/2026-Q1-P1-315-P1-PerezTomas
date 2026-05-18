@@ -12,7 +12,14 @@
 ##   7. Salir
 
 
-##
+def verificarExistencia(codigo):
+    prodExiste = False
+    for posicion in range(len(productosNombres)):
+        if productosCodigo[posicion].lower() == codigo.lower():
+            prodExiste = True 
+            break
+    return prodExiste
+
 
 productosCodigo = [
     'TLV',
@@ -38,6 +45,9 @@ productosStock = [
     3,
     1
 ]
+
+
+# 2026-Q1-P1-315-P1-PerezTomas
 
 opcion = -1
 
@@ -65,10 +75,27 @@ while opcion != 7:
             print("Agregar producto\n")
             print("==============================\n")
 
-            codigoProd=input("Ingrese el Código del producto: ")
+            codigoExiste = True
+            while codigoExiste:
+                codigoProd=input("Ingrese el Código del producto: ")
+
+                codigoExiste = verificarExistencia(codigoProd)
+                if codigoExiste:
+                    print("Ese codigo de producto ya existe, cambialo.")
+
             nombreProd=input("Ingrese el Nombre del producto: ")
-            precioProd = float(input("Ingrese el Precio del producto: "))
-            stockProd = int(input("Ingrese el Stock del Producto: "))
+            precioProd = 0
+
+            while precioProd <= 0:
+                precioProd = float(input("Ingrese el Precio del producto: "))
+                if precioProd <= 0:
+                    print("El precio no puede ser 0 o menos, corregilo.")
+
+            stockProd = -1
+            while stockProd < 0:
+                stockProd = int(input("Ingrese el Stock del producto: "))
+                if stockProd <= 0:
+                    print("El Stock no puede ser negativo, corregilo.")
 
             productosCodigo.append(codigoProd)
             productosNombres.append(nombreProd)
@@ -174,3 +201,4 @@ while opcion != 7:
             print("==============================\n")          
 
             opcion = 7
+
