@@ -190,10 +190,10 @@ while opcion != 7:
             valorTotal = 0
 
             for posicion in range(len(productosPrecios)):
-                print(f"Valor total: {valorTotal}")
+                #print(f"Valor total: {valorTotal}")
                 sumaProductos = productosPrecios[posicion] * productosStock[posicion]
                 valorTotal += sumaProductos
-                print(f"Se le suma {productosPrecios[posicion]} * {productosStock[posicion]} ({sumaProductos})")
+                #print(f"Se le suma {productosPrecios[posicion]} * {productosStock[posicion]} ({sumaProductos})")
             
             print(f"Valor total del inventario: {valorTotal}")
 
